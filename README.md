@@ -1,6 +1,6 @@
-# Beat the Creep
+# Beat the CreepJS
 
-Beat the Creep is a project designed to challenge the fingerprinting techniques employed by the [CreepJS website](https://abrahamjuliot.github.io/creepjs). Leveraging Puppeteer and evasion strategies, this project aims to navigate through the website's sophisticated detection mechanisms, achieving a 100% A+ score, and demonstrating the potential to preserve privacy and anonymity online against sophisticated fingerprinting methods.
+Beat the CreepJS is a project designed to challenge the fingerprinting techniques employed by the [CreepJS website](https://abrahamjuliot.github.io/creepjs). Leveraging Puppeteer and evasion strategies, this project aims to navigate through the website's sophisticated detection mechanisms, achieving a 100% A+ score, and demonstrating the potential to preserve privacy and anonymity online against sophisticated fingerprinting methods.
 
 
 ## Implemented Techniques
@@ -22,11 +22,11 @@ npm install
 
 After installation, run the `creep.js` script to initiate the process.
 
-### Future Advancements: Spoofing the Fingerprint in Chromium using a Custom Built Patch
+## Future Advancements: Spoofing the Fingerprint in Chromium using a Custom Built Patch
 
 A key strategic enhancement involves advanced fingerprint spoofing by directly modifying Chromium's source code. This would allow for the spoofing of the `GL_RENDERER` string or other parameters used to fingerprint users, crucial in the WebGL context, to evade detection mechanisms that rely on GPU information for fingerprinting.
 
-#### Steps to Spoof GL_RENDERER
+### Steps to Spoof GL_RENDERER
 
 1. **Locate and Modify the GetGLString Function**:
    The `GetGLString` function in Chromium's source is responsible for fetching various OpenGL strings, including the GPU renderer information. By modifying its implementation, we can force it to return a custom string, thereby spoofing the GPU renderer information reported to websites.
@@ -47,7 +47,7 @@ A key strategic enhancement involves advanced fingerprint spoofing by directly m
 3. **Testing the Modification**:
    Testing your custom build of Chromium is essential to ensure that the spoofed `GL_RENDERER` string is being correctly reported. This can be verified by accessing web pages or applications that display or log GPU information.
 
-#### Exposing an API for Dynamic Spoofing via Puppeteer
+### Exposing an API for Dynamic Spoofing via Puppeteer
 
 To further enhance the utility and flexibility of this spoofing technique, integrating an API that allows for dynamic modification of the `GL_RENDERER` value at runtime would be a significant advancement. Such an API could be controlled through Puppeteer, enabling scripts to adjust the spoofed value based on specific needs or to evade detection mechanisms dynamically.
 
