@@ -2,6 +2,13 @@ const fs = require('fs').promises;
 const proxyChain = require('proxy-chain');
 require('dotenv').config();
 
+const userAgents = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
+    'Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Mobile Safari/537.36',
+];
+
 function getRandomResidentialProxy() {
     // Access username and password from environment variables
     const username = process.env.PROXY_USERNAME;
@@ -78,6 +85,11 @@ async function ensureDirectoryExists(directoryPath) {
     }
 }
 
+function getRandomUserAgent() {
+    const randomIndex = Math.floor(Math.random() * userAgents.length);
+    return userAgents[randomIndex];
+}
+
 module.exports = {
     fs,
     proxyChain,
@@ -88,5 +100,6 @@ module.exports = {
     typeWithRandomSpeed,
     getText,
     getFingerprintHash,
-    ensureDirectoryExists
+    ensureDirectoryExists,
+    getRandomUserAgent
 };

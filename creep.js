@@ -1,7 +1,7 @@
 const path = require('path');
 const puppeteer = require('puppeteer-extra');
 const pluginStealth = require('puppeteer-extra-plugin-stealth');
-const { fs, proxyChain, getRandomResidentialProxy, wait, getRandomNumber, getRandomSearchQuery, typeWithRandomSpeed, ensureDirectoryExists, getText, getFingerprintHash } = require('./utilities');
+const { fs, proxyChain, getRandomResidentialProxy, wait, getRandomNumber, getRandomSearchQuery, typeWithRandomSpeed, ensureDirectoryExists, getText, getFingerprintHash, getRandomUserAgent } = require('./utilities');
 puppeteer.use(pluginStealth());
 
 async function setupBrowser() {
@@ -16,7 +16,7 @@ async function setupBrowser() {
             '--disable-setuid-sandbox',
             '--disable-infobars', 
             '--disable-extensions',
-            //'--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"',
+            //`--user-agent=${getRandomUserAgent()}`, Disabling since it lowers score
             '--auto-open-devtools-for-tabs',
             `--proxy-server=${proxyUrl}`,
 ]});
